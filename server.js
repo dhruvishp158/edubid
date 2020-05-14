@@ -14,6 +14,6 @@ app.get("/", (req, res) => {
 //Define routes from api folder
 app.use("/api/users", require("./routes/api/users.api"));
 app.use("/api/auth", require("./routes/api/auth.route"));
-
+app.use("/api/profile", require("./routes/api/profile.route"));
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`server started on port ${PORT}`));
