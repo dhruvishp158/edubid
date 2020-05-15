@@ -15,8 +15,8 @@ const ProfileSchema = new mongoose.Schema({
 
   //need to add
   profilePicture: {
-    data: Buffer,
-    contentType: String,
+    type: Array,
+    default: [],
   },
   address: {
     type: String,

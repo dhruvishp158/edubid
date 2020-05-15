@@ -1,0 +1,28 @@
+.forTeacher {
+  margin: auto;
+  width: 300px;
+  padding: 1rem;
+  color: black;
+  text-align: center;
+  background: linear-gradient(
+      180deg,
+      rgb(255, 255, 255) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    rgb(106, 135, 148);
+  box-shadow: 0px 4px 4px rgba(105, 102, 102, 0.25);
+}
+.forStudent {
+  margin: auto;
+  width: 300px;
+  padding: 1rem;
+  color: black;
+  text-align: center;
+  background: linear-gradient(
+      180deg,
+      rgb(255, 255, 255) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    rgb(106, 135, 148);
+  box-shadow: 0px 4px 4px rgba(105, 102, 102, 0.25);
+}

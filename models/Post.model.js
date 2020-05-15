@@ -11,13 +11,9 @@ const PostSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "profile",
   },
-  profilePicture: {
-    data: Buffer,
-    contentType: String,
-  },
   img: {
-    data: Buffer,
-    contentType: String,
+    type: Array,
+    default: [],
   },
   text: {
     type: String,
@@ -26,7 +22,10 @@ const PostSchema = new Schema({
   name: {
     type: String,
   },
-
+  profilePicture: {
+    type: Array,
+    default: [],
+  },
   likes: [
     {
       user: {
@@ -49,12 +48,15 @@ const PostSchema = new Schema({
         type: String,
         required: true,
       },
+      type: {
+        type: String,
+      },
       name: {
         type: String,
       },
       profilePicture: {
-        data: Buffer,
-        contentType: String,
+        type: Array,
+        default: [],
       },
       date: {
         type: Date,

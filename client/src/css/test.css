@@ -1,0 +1,95 @@
+.forWidth {
+  width: 100%;
+  /* overflow: auto; */
+  height: 700px;
+  left: 0px;
+  top: 0px;
+  background: linear-gradient(
+      180deg,
+      rgb(199, 196, 196) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    #9bc6d9;
+}
+.main {
+  width: 90%;
+  margin: 0 auto;
+  height: 700px;
+  left: 0px;
+  top: 0px;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
+    #9bc6d9;
+}
+.forBox {
+  margin: 0 auto;
+  margin-top: 7.2rem;
+  padding: 5rem;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
+    #9bc6d9;
+  padding-top: 2rem;
+}
+.loginForm {
+  text-align: center;
+}
+.ab {
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 7rem;
+
+  width: 500px;
+  height: 500px;
+  background: linear-gradient(
+      180deg,
+      rgb(255, 255, 255) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    rgb(106, 135, 148);
+  box-shadow: 0px 4px 4px rgba(105, 102, 102, 0.25);
+}
+.ab h1 {
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
+    #9bc6d9;
+  padding: 2rem;
+}
+.nav-wrapper {
+  background: black;
+}
+#dropdown-basic {
+  background: linear-gradient(
+      180deg,
+      rgb(255, 255, 255) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    rgb(102, 157, 180);
+  box-shadow: 0px 4px 4px rgba(145, 137, 137, 0.25);
+  margin-right: 2rem;
+  color: black;
+}
+.dropdown-item {
+  color: black;
+  width: 117px;
+}
+.brand-logo {
+  margin-left: 2rem;
+}
+::placeholder {
+  color: rgb(59, 59, 59);
+  padding: 1rem;
+}
+input[type="submit"] {
+  background: linear-gradient(
+      180deg,
+      rgb(255, 255, 255) 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    rgb(102, 157, 180);
+  box-shadow: 0px 4px 4px rgba(145, 137, 137, 0.25);
+  color: black;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  padding-top: 1rem;
+  margin-top: 2rem;
+}
