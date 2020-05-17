@@ -8,6 +8,43 @@ const request = require("request");
 const config = require("config");
 const Post = require("../../Models/Post.model");
 
+//for store location
+// const Store = require("../../models/Store");
+// const { getAddress, createAddress } = require("../../middleware/store");
+// router.route("/address").get(getAddress).post(createAddress);
+
+//Image
+const multer = require("multer");
+const path = require("path");
+let storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/");
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}_${file.originalname}`);
+  },
+  fileFilter: (req, file, cb) => {
+    const ext = path.extname(file.originalname);
+    if (ext !== ".jpg" || ext !== ".jpeg" || ext !== "png") {
+      return cb(res.status(400).end("only image please!"), end);
+    }
+    cb(null, true);
+  },
+});
+var upload = multer({ storage: storage }).single("file");
+
+router.post("/image", (req, res) => {
+  upload(req, res, (err) => {
+    if (err) return res.json({ success: false, err });
+    console.log(res.req.file.filename);
+    return res.json({
+      success: true,
+      image: res.req.file.path,
+      filename: res.req.file.filename,
+    });
+  });
+});
+
 //@route  GET api/profile/me
 //@desc   get current user profile
 //@access private
