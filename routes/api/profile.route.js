@@ -33,6 +33,9 @@ let storage = multer.diskStorage({
 });
 var upload = multer({ storage: storage }).single("file");
 
+//@route  POST api/profile/image
+//@desc   upload profile Picture
+//@access private
 router.post("/image", (req, res) => {
   upload(req, res, (err) => {
     if (err) return res.json({ success: false, err });
@@ -43,6 +46,40 @@ router.post("/image", (req, res) => {
       filename: res.req.file.filename,
     });
   });
+});
+
+//@route  get api/profile/search
+//@desc   serach for topics
+//@access private
+function escapeRegex(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+}
+router.get("/search", async (req, res) => {
+  try {
+    if (req.query.search) {
+      const regex = new RegExp(escapeRegex(req.query.search), "gi");
+      component = await Profile.find({ topics: regex }, function (err, found) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("something");
+          return res.json(found);
+        }
+      });
+    } else {
+      component = await Profile.find({}, function (err, found) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("nothing");
+          return res.json(found);
+        }
+      });
+    }
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send("server error");
+  }
 });
 
 //@route  GET api/profile/me

@@ -1,23 +1,32 @@
 import React from "react";
 import { useState } from "react";
-import { useSpring, animated } from "react-spring";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { login } from "../../actions/auth";
+function LogIn({ isAuthenticated, login }) {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const { email, password } = formData;
 
-function LogIn() {
-  const fade = useSpring({ opacity: 1, color: "red" });
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-
+  const onChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(userName);
-    console.log(password);
+    console.log(formData);
+    login(email, password);
   }
-
+  if (isAuthenticated) {
+    console.log("success");
+    // return <Redirect to='/dashboard' />;
+  }
   return (
     <div className='forGrid'>
-      <animated.div className='ab' style={{ fade }}>
-        <h1 style={{ fontSize: "2rem" }}>LogIn</h1>
+      <div className='forLogIn'>
+        <h1 style={{ fontSize: "2.5rem", fontWeight: "500" }}>LOG IN</h1>
 
         <form
           className='loginForm'
@@ -25,13 +34,12 @@ function LogIn() {
           onSubmit={handleSubmit}
         >
           <input
-            type='text'
-            name='username'
-            id='username'
+            type='email'
+            name='email'
+            id='email'
             placeholder='Enter your Email'
             onChange={(e) => {
-              console.log(e.target.value);
-              setUserName(e.target.value);
+              onChange(e);
             }}
           />
           <input
@@ -40,21 +48,33 @@ function LogIn() {
             id='password'
             placeholder='Enter your Password'
             onChange={(e) => {
-              console.log(e.target.value);
-              setPassword(e.target.value);
+              onChange(e);
             }}
           />
-          <input type='submit' value='LogIn' />
-          <p>
+          <input
+            type='submit'
+            value='LOG IN'
+            className='navLinks'
+            style={{ fontWeight: "500", fontSize: "1.4rem" }}
+          />
+          <p style={{ fontSize: "1.4rem" }}>
             First time visit?{" "}
-            <Link to='/SignUp' style={{ color: "green" }}>
-              SignUp
+            <Link to='/SignUp' style={{ color: "green", fontWeight: "500" }}>
+              Sign Up
             </Link>
           </p>
         </form>
-      </animated.div>
+      </div>
     </div>
   );
 }
 
-export default LogIn;
+LogIn.propTypes = {
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
+};
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+export default connect(mapStateToProps, { login })(LogIn);

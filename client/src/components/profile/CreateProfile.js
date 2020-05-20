@@ -22,11 +22,7 @@ const CreateProfile = (props) => {
     });
   };
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-      }}
-    >
+    <form>
       <div>
         <Dropzone onDrop={onDrop} multiple={false} maxSize={10000000000}>
           {({ getRootProps, getInputProps }) => (
@@ -40,6 +36,7 @@ const CreateProfile = (props) => {
         </div> */}
         </Dropzone>
       </div>
+      <input type='text' name='search' placeholder='Search here' />
       <button type='submit' className='btn' value='submit'>
         Submit
       </button>
