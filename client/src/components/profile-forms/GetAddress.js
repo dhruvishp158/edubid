@@ -8,22 +8,18 @@ const GetAddress = (props) => {
   async function getStores() {
     const res = await fetch("/api/profile/address");
     const data = await res.json();
-    // console.log(data);
+    console.log(data);
     const stores = data.data.map((store) => {
-      //   console.log(store);
       console.log(store);
       return {
         type: "Feature",
         geometry: {
           type: "Point",
-          coordinates: [
-            store.location.coordinates[0],
-            store.location.coordinates[1],
-          ],
+          coordinates: [store.coordinates[0], store.coordinates[1]],
         },
         properties: {
           _id: store._id,
-          title: store.location.formattedAddress,
+          title: store.formattedAddress,
           icon: "town-hall",
         },
       };

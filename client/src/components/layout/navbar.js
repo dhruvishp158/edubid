@@ -1,10 +1,13 @@
-import React from "react";
+import React, { Fragment } from "react";
 // import { Dropdown } from "react-bootstrap";
 import SignedInLinks from "./signedInLinks";
 import SignedOutLinks from "./SignedoutLinks";
 import { Link } from "react-router-dom";
 import logo from "../../images/logo.PNG";
-function NavBar() {
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+
+function NavBar({ auth: { isAuthenticated, loading } }) {
   return (
     <nav>
       <div className='nav-wrapper'>
@@ -13,18 +16,29 @@ function NavBar() {
         </Link>
         <ul className='right hide-on-med-and-down'>
           <li>
-            <SignedOutLinks />
+            {/* <SignedOutLinks /> */}
+            {!loading && (
+              <Fragment>
+                {isAuthenticated ? <SignedInLinks /> : <SignedOutLinks />}
+              </Fragment>
+            )}
           </li>
-          <li>
+          {/* <li>
             <SignedInLinks />
-          </li>
+          </li> */}
         </ul>
       </div>
     </nav>
   );
 }
 
-export default NavBar;
+NavBar.propTypes = {
+  auth: PropTypes.object.isRequired,
+};
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+export default connect(mapStateToProps)(NavBar);
 
 // <nav className='navbar navbar-expand-lg navbar-light bg-light'>
 //   <button

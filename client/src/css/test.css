@@ -3,8 +3,8 @@
 }
 .forWidth {
   width: 100%;
-  overflow: auto;
-  height: 100%;
+  /* overflow: auto; */
+  min-height: 1100px;
   left: 0px;
   top: 0px;
   background: linear-gradient(
@@ -40,7 +40,7 @@
 .main {
   width: 90%;
   margin: 0 auto;
-  height: 700px;
+  min-height: 700px;
   left: 0px;
   top: 0px;
   /* background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
@@ -167,6 +167,7 @@ input[type="submit"] {
   color: white;
 }
 .profile {
+  min-width: 550px;
   display: grid;
   grid-template-columns: auto auto;
   grid-gap: 20px;
@@ -188,6 +189,43 @@ input[type="submit"] {
 }
 .part2 {
   padding: 1rem;
+}
+.profile-picture {
+  text-align: center;
+  width: 300px;
+  height: 340px;
+  font-weight: 500;
+  font-size: 1.7rem;
+  margin: 1rem auto;
+  margin-bottom: 5rem;
+  padding: 1rem;
+  border: 1px solid black;
+}
+.updateProfile {
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
+    #9bc6d9;
+  box-shadow: 0px 4px 4px rgba(105, 102, 102, 0.25);
+}
+.updateProfile input[type="text"],
+.updateProfile textarea {
+  max-width: 1290px;
+  background-color: black;
+  color: white;
+  padding: 10px;
+  border-radius: 1rem;
+}
+.updateProfile ::placeholder {
+  color: rgb(97, 91, 91);
+}
+.updateProfile h1 {
+  text-align: center;
+  color: black;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
+    #9bc6d9;
+  padding: 2rem;
+}
+.updateProfile label {
+  color: black;
 }
 .col-md-6,
 .col-lg-4,
@@ -329,5 +367,35 @@ input[type="submit"] {
   100% {
     -webkit-transform: scale(1);
     transform: scale(1);
+  }
+}
+
+.updateProfile {
+  -webkit-animation: scale-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    both;
+  animation: scale-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+@-webkit-keyframes updateProfile {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes scale-in-center {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
   }
 }

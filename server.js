@@ -7,7 +7,7 @@ connectDB();
 //Init middleware i.e=BodyParser
 app.use(express.json({ extended: false }));
 app.use(cors());
-
+app.use("/uploads", express.static("uploads"));
 app.get("/", (req, res) => {
   res.send("API is running 7000..");
 });

@@ -21,7 +21,7 @@ function LogIn({ isAuthenticated, login }) {
   }
   if (isAuthenticated) {
     console.log("success");
-    // return <Redirect to='/dashboard' />;
+    return <Redirect to='/dashboard' />;
   }
   return (
     <div className='forGrid'>

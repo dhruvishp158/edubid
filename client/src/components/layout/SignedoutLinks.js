@@ -14,11 +14,6 @@ const SignedOutLinks = () => {
           LOG IN
         </NavLink>
       </li>
-      <li>
-        <NavLink to='/' className='navLinks'>
-          LOG OUT
-        </NavLink>
-      </li>
     </ul>
   );
 };

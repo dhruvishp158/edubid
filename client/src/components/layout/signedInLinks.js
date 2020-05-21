@@ -1,13 +1,29 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-
-const SignedInLinks = () => {
+import { logout } from "../../actions/auth";
+import { connect } from "react-redux";
+const SignedInLinks = ({ logout }) => {
   return (
     <ul className='right'>
       <li>
-        <NavLink to='/' className='navLinks'>
-          NEW PROJECT
+        <NavLink to='/dashboard' className='navLinks'>
+          DASHBOARD
         </NavLink>
+      </li>
+      <li>
+        <NavLink to='/' className='navLinks'>
+          TEACHERS
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to='/' className='navLinks'>
+          POSTS
+        </NavLink>
+      </li>
+      <li>
+        <a onClick={logout} className='navLinks'>
+          <span className='hide-sm'>LOGOUT</span>
+        </a>
       </li>
       <li>
         <NavLink to='/' className='btn btn-floating pink lighten-1'>
@@ -18,4 +34,4 @@ const SignedInLinks = () => {
   );
 };
 
-export default SignedInLinks;
+export default connect(null, { logout })(SignedInLinks);

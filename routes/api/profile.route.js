@@ -13,6 +13,24 @@ const Post = require("../../Models/Post.model");
 // const { getAddress, createAddress } = require("../../middleware/store");
 // router.route("/address").get(getAddress).post(createAddress);
 
+router.get("/address", async (req, res) => {
+  try {
+    const data = await Profile.find();
+    const stores = [];
+    for (let i = 0; i < data.length; i++) {
+      stores.push(data[i].location);
+    }
+    console.log(stores);
+
+    return res
+      .status(200)
+      .json({ success: true, count: stores.length, data: stores });
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).json("server error");
+  }
+});
+
 //Image
 const multer = require("multer");
 const path = require("path");
@@ -122,6 +140,7 @@ router.post(
     }
 
     const {
+      profilePicture,
       website,
       address,
       bio,
@@ -137,6 +156,7 @@ router.post(
     //build profile object
     const profileFields = {};
     profileFields.user = req.user.id;
+    if (profilePicture) profileFields.profilePicture = profilePicture;
     if (website) profileFields.website = website;
     if (address) profileFields.address = address;
     if (bio) profileFields.bio = bio;

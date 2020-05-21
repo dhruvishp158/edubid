@@ -4,16 +4,20 @@ import NavBar from "./components/layout/navbar";
 import LogIn from "./components/auth/login";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SignUp from "./components/auth/signUp";
-import GetAddress from "./components/profile/GetAddress";
-import CreateProfile from "./components/profile/CreateProfile";
+import GetAddress from "./components/profile-forms/GetAddress";
+import CreateProfile from "./components/profile-forms/CreateProfile";
 import Home from "./components/layout/Home";
 import setAuthToken from "./components/utils/authToken";
 
-//store
+//storeofile
 import store from "./store";
 import { Provider } from "react-redux";
 import Alert from "./components/layout/alert";
 import { loadUser } from "./actions/auth";
+import Dashboard from "./components/dashboard/Dashboard";
+import PrivateRoute from "./components/privateRoute/PrivateRoute";
+import CreateProfileForm from "./components/profile-forms/CreateProfileForm";
+import UpdateProfile from "./components/profile-forms/UpdateProfile";
 // ===========================================================================================
 
 if (localStorage.token) {
@@ -35,8 +39,24 @@ const App = () => {
                 <Route exact path='/' component={Home} />
                 <Route exact path='/LogIn' component={LogIn} />
                 <Route exact path='/SignUp' component={SignUp} />
+                <PrivateRoute exact path='/dashboard' component={Dashboard} />
+                <PrivateRoute
+                  exact
+                  path='/create-profile'
+                  component={CreateProfileForm}
+                />
+                <PrivateRoute
+                  exact
+                  path='/edit-profile'
+                  component={UpdateProfile}
+                />
+
                 <Route exact path='/get-address' component={GetAddress} />
-                <Route exact path='/create-profile' component={CreateProfile} />
+                <Route
+                  exact
+                  path='/create-profile'
+                  component={CreateProfileForm}
+                />
               </Switch>
 
               {/* <LogIn /> */}
