@@ -21,7 +21,6 @@ const CreateProfileForm = ({ createProfile, history }) => {
   const [profilePicture, setImages] = useState([]);
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
   const {
-    status,
     website,
     address,
     topics,

@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { getCurrentProfile } from "../../actions/profile";
 import { connect } from "react-redux";
@@ -14,7 +14,7 @@ const Dashboard = ({
     getCurrentProfile();
   }, [getCurrentProfile]);
   return (
-    <div>
+    <div className='dash-buttons'>
       {!loading && profile === null ? (
         <div>
           <p>You do not have profile</p>
@@ -24,6 +24,12 @@ const Dashboard = ({
             style={{ borderRadius: "1rem", margin: "1rem", width: "232px" }}
           >
             CREATE PROFILE
+          </Link>
+          <Link to='/add-experience' className='btn btn-light'>
+            <i className='fab fa-black-tie text-primary'></i> Add Experience
+          </Link>
+          <Link to='/add-education' className='btn btn-light'>
+            <i className='fas fa-graduation-cap text-primary'></i> Add Education
           </Link>
         </div>
       ) : (

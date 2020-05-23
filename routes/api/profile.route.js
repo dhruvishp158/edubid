@@ -13,24 +13,6 @@ const Post = require("../../Models/Post.model");
 // const { getAddress, createAddress } = require("../../middleware/store");
 // router.route("/address").get(getAddress).post(createAddress);
 
-router.get("/address", async (req, res) => {
-  try {
-    const data = await Profile.find();
-    const stores = [];
-    for (let i = 0; i < data.length; i++) {
-      stores.push(data[i].location);
-    }
-    console.log(stores);
-
-    return res
-      .status(200)
-      .json({ success: true, count: stores.length, data: stores });
-  } catch (err) {
-    console.log(err.message);
-    res.status(500).json("server error");
-  }
-});
-
 //Image
 const multer = require("multer");
 const path = require("path");
@@ -129,7 +111,6 @@ router.post(
     [
       check("status", "status is required").not().isEmpty(),
       check("topics", "topics is required").not().isEmpty(),
-      check("address", "address is required").notEmpty(),
       check("bio", "bio is required").notEmpty(),
     ],
   ],
@@ -217,7 +198,7 @@ router.get("/user/:user_id", async (req, res) => {
   try {
     const profile = await Profile.findOne({
       user: req.params.user_id,
-    }).populate("user", ["name", "avatar", "type"]);
+    }).populate("user", ["name", "type"]);
 
     if (!profile) {
       return res.status(400).json({ msg: "there is no profile for this user" });
@@ -276,20 +257,11 @@ router.put(
       res.status(400).json({ errors: errors.array() });
     }
 
-    const {
-      title,
-      company,
-      location,
-      from,
-      to,
-      current,
-      description,
-    } = req.body;
+    const { title, company, from, to, current, description } = req.body;
 
     const newExp = {
       title,
       company,
-      location,
       from,
       to,
       current,
@@ -297,6 +269,8 @@ router.put(
     };
     try {
       const profile = await Profile.findOne({ user: req.user.id });
+      profile.address = profile.location.formattedAddress;
+      console.log(profile.address);
       profile.experience.unshift(newExp);
       await profile.save();
       res.json(profile);
@@ -348,6 +322,7 @@ router.put(
     };
     try {
       const profile = await Profile.findOne({ user: req.user.id });
+      profile.address = profile.location.formattedAddress;
       profile.education.unshift(newEdu);
       await profile.save();
       res.json(profile);
@@ -359,7 +334,7 @@ router.put(
 );
 
 //@route  delete api/profile/experience/:exp_id
-//@desc  delete particular expirence
+//@desc  delete particular experience
 //@access private
 router.delete("/experience/:exp_id", auth, async (req, res) => {
   try {
@@ -397,6 +372,24 @@ router.delete("/education/:edu_id", auth, async (req, res) => {
   } catch (error) {
     console.error(error.message);
     res.status(500).send("server error");
+  }
+});
+
+router.get("/address", async (req, res) => {
+  try {
+    const data = await Profile.find();
+    const stores = [];
+    for (let i = 0; i < data.length; i++) {
+      stores.push(data[i].location);
+    }
+    console.log(stores);
+
+    return res
+      .status(200)
+      .json({ success: true, count: stores.length, data: stores });
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).json("server error");
   }
 });
 module.exports = router;

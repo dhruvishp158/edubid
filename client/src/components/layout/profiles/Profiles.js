@@ -1,6 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
-import testImage from "../../../images/6.jpg";
+
 import { Link } from "react-router-dom";
 
 const Profiles = ({

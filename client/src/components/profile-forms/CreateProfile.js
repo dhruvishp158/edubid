@@ -29,7 +29,7 @@ const CreateProfile = (props) => {
           <div {...getRootProps()}>
             <input {...getInputProps()} />
             <div className='profile-picture'>
-              <img src={uploadImage} alt='for image' />
+              <img src={uploadImage} alt='for uploads' />
               <p></p> Upload Profile Picture{" "}
             </div>
           </div>

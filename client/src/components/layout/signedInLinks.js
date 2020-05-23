@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { logout } from "../../actions/auth";
 import { connect } from "react-redux";
-const SignedInLinks = ({ logout }) => {
+const SignedInLinks = ({ logout, profile }) => {
   return (
     <ul className='right'>
       <li>
@@ -34,4 +34,8 @@ const SignedInLinks = ({ logout }) => {
   );
 };
 
-export default connect(null, { logout })(SignedInLinks);
+const mapStateToProps = (state) => ({
+  profile: state.profile,
+});
+
+export default connect(mapStateToProps, { logout })(SignedInLinks);

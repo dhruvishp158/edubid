@@ -1,6 +1,12 @@
 * {
   box-sizing: border-box;
 }
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: relative;
+  opacity: 1;
+  pointer-events: auto;
+}
 .forWidth {
   width: 100%;
   /* overflow: auto; */
@@ -167,7 +173,7 @@ input[type="submit"] {
   color: white;
 }
 .profile {
-  min-width: 550px;
+  min-width: 590px;
   display: grid;
   grid-template-columns: auto auto;
   grid-gap: 20px;
@@ -231,6 +237,90 @@ input[type="submit"] {
 .col-lg-4,
 .col-xl-3 {
   border: 1px solid black;
+}
+
+.forTop {
+  height: 500px;
+  background-color: black;
+}
+.top-body {
+  text-align: center;
+}
+.for-profile-img {
+  height: 200px;
+  width: 400px;
+  margin: 0 auto;
+}
+.profile-top .round-img {
+  height: 400px;
+  width: 400px;
+  position: absolute;
+  top: 55%;
+  border-radius: 50%;
+}
+.profile-top .icons {
+  padding-bottom: 1rem;
+}
+.profile-top .icons > a {
+  margin-top: 2rem;
+  padding: 1rem;
+}
+.profile-top {
+  /* border: 1px solid #c0bcbc; */
+  border: 1px solid black;
+  border-radius: 2rem;
+}
+.profile-top {
+  background-color: #c0bcbc;
+  border: 1px solid #c0bcbc;
+  border-radius: 2rem;
+}
+.profileAbout,
+.profile-exp {
+  /* background-color: #c0bcbc; */
+  background: black;
+}
+.profileAbout,
+.profile-exp {
+  margin-top: 1rem;
+  /* border: 1px solid #c0bcbc; */
+  border: 1px solid black;
+
+  border-radius: 2rem;
+}
+.profileAbout-1,
+.profileAbout-2 {
+  margin: 2rem;
+  border-radius: 2rem;
+  /* background-color: black;
+  color: #c0bcbc; */
+  background: #c0bcbc;
+  color: black;
+}
+.profileAbout-2 .topics,
+.profile-exp-grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  text-align: center;
+  padding: 1rem;
+  margin: 1rem;
+  /* color: #c0bcbc; */
+  color: black;
+}
+.profileExperience,
+.profileEducation {
+  /* background: black; */
+  background: #c0bcbc;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 2rem;
+}
+.profile-exp-grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 1rem;
+  margin: 1rem;
+  text-align: left;
 }
 
 /* Animation */
