@@ -242,6 +242,7 @@ input[type="submit"] {
 .forTop {
   height: 500px;
   background-color: black;
+  position: relative;
 }
 .top-body {
   text-align: center;
@@ -252,10 +253,18 @@ input[type="submit"] {
   margin: 0 auto;
 }
 .profile-top .round-img {
-  height: 400px;
+  /* height: 400px;
   width: 400px;
   position: absolute;
   top: 55%;
+  border-radius: 50%; */
+
+  height: 250px;
+  width: 250px;
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translate(-50%, 50%);
   border-radius: 50%;
 }
 .profile-top .icons {

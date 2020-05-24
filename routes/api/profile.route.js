@@ -338,8 +338,10 @@ router.put(
 //@access private
 router.delete("/experience/:exp_id", auth, async (req, res) => {
   try {
-    const profile = await Profile.findOne({ user: req.user.id });
-
+    const profile = await Profile.findOne({
+      user: req.user.id,
+    }).populate("user", ["name", "type"]);
+    profile.address = profile.location.formattedAddress;
     //get remove index
     const removeIndex = profile.experience
       .map((item) => item.id)

@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { useEffect } from "react";
 import Spinner from "../layout/Spinner";
 import { Link } from "react-router-dom";
+import Profile from "../profile/Profile";
 const Dashboard = ({
   getCurrentProfile,
   profile: { profile, loading },

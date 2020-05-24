@@ -17,15 +17,17 @@ const ProfileTop = ({
   console.log(a);
   return (
     <div className='profile-top'>
-      <div className='forTop'></div>
-      <div className='for-profile-img'>
+      <div className='forTop'>
         <img
           className='round-img my-1'
           src={`http://localhost:3000/${profilePicture}`}
           alt=''
         />
       </div>
-      <div className='top-body'>
+      {/* <div className='for-profile-img'> */}
+
+      {/* </div> */}
+      <div className='top-body' style={{ paddingTop: "100px" }}>
         <h1 className='large' style={{}}>
           {name}
         </h1>

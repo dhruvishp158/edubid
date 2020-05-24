@@ -57,7 +57,9 @@ const CreateProfileForm = ({ createProfile, history }) => {
           style={{ margin: "0 auto" }}
         >
           <div className='form-group'>
-            <CreateProfile refreshFunction={updateImages} />
+            <CreateProfile
+              refreshFunction={(newImages) => setImages(newImages)}
+            />
           </div>
           <div className='form-group'>
             <label htmlFor='address' style={{ fontSize: "1.4rem" }}>
