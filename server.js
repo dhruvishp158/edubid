@@ -3,7 +3,9 @@ const connectDB = require("./config/db");
 const cors = require("cors");
 
 const app = express();
+
 connectDB();
+
 //Init middleware i.e=BodyParser
 app.use(express.json({ extended: false }));
 app.use(cors());

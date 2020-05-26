@@ -14,7 +14,6 @@ const ProfileTop = ({
 }) => {
   let a = [];
   a = location.formattedAddress.trim().split(",");
-  console.log(a);
   return (
     <div className='profile-top'>
       <div className='forTop'>

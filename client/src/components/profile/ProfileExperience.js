@@ -4,10 +4,11 @@ import Moment from "react-moment";
 import { deleteExperience } from "../../actions/profile";
 import { connect } from "react-redux";
 const ProfileExperience = ({
+  auth,
+  profile,
   deleteExperience,
   experience: { company, title, to, from, description, _id },
 }) => {
-  console.log(_id);
   return (
     <div className='profileExperience'>
       <h3 className='dark'>{company}</h3>
@@ -25,16 +26,20 @@ const ProfileExperience = ({
         <strong>Description: </strong>
         {description}
       </p>
-      <button
-        className='btn btn-danger'
-        onClick={() => deleteExperience(_id)}
-        style={{
-          background: "red",
-          borderRadius: "2rem",
-        }}
-      >
-        DELETE EXPERIENCE
-      </button>
+      {auth.isAuthenticated &&
+        auth.loading === false &&
+        auth.user._id === profile.user._id && (
+          <button
+            className='btn btn-danger'
+            onClick={() => deleteExperience(_id)}
+            style={{
+              background: "red",
+              borderRadius: "2rem",
+            }}
+          >
+            DELETE EXPERIENCE
+          </button>
+        )}
     </div>
   );
 };
@@ -42,6 +47,12 @@ const ProfileExperience = ({
 ProfileExperience.propTypes = {
   experience: PropTypes.object.isRequired,
   deleteExperience: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
 };
 
-export default connect(null, { deleteExperience })(ProfileExperience);
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+export default connect(mapStateToProps, { deleteExperience })(
+  ProfileExperience
+);

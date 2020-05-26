@@ -332,11 +332,46 @@ input[type="submit"] {
   text-align: left;
 }
 
+.textImage {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+.post-form {
+  background-color: black;
+  color: #c0bcbc;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 2rem;
+}
+.BodyWidth {
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: black;
+  padding: 1rem;
+  border-radius: 2rem;
+}
+.postBody {
+  padding: 3rem;
+  margin-top: 1rem;
+}
+.postGrid1 {
+  display: grid;
+  grid-template-columns: 67px 1fr;
+}
 /* Animation */
 .ab,
 .forLogIn {
   -webkit-animation: ab 1.1s both;
   animation: ab 1.1s both;
+}
+.postImage {
+  display: block;
+  height: 500px;
+  width: 520px;
+  margin: 0 auto;
+}
+.postHover:hover {
+  text-decoration: none;
 }
 @-webkit-keyframes ab {
   0% {

@@ -70,17 +70,24 @@ const GetAddress = (props) => {
   });
 
   return (
-    <div className='container my-3'>
-      <h1 className='display-4 text-center'>
-        <i className='fas fa-map-marked mr-4'></i> Store Locator
-      </h1>
-      <Link to='/create-profile' className='btn btn-success mb-4'>
-        Add Store
+    <div>
+      <Link
+        to='/dashboard'
+        className='btn btn-light'
+        style={{ margin: "1rem" }}
+      >
+        Go Back
       </Link>
-      <div
-        id='map'
-        style={{ width: "100%", height: "400px", borderRadius: "5px" }}
-      ></div>
+      <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+        <h1 className='display-4 text-center'>
+          <i className='fas fa-map-marked mr-4'></i> TEACHER LOCATOR
+        </h1>
+
+        <div
+          id='map'
+          style={{ width: "100%", height: "670px", borderRadius: "5px" }}
+        ></div>
+      </div>
     </div>
   );
 };

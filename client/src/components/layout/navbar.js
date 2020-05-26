@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import logo from "../../images/logo.PNG";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import Search from "./Search";
 
 function NavBar({ auth: { isAuthenticated, loading } }) {
   return (
@@ -15,6 +16,9 @@ function NavBar({ auth: { isAuthenticated, loading } }) {
           <img src={logo} style={{ width: "120px" }} alt='for logo' />
         </Link>
         <ul className='right hide-on-med-and-down'>
+          <li>
+            <Search />
+          </li>
           <li>
             {!loading && (
               <Fragment>

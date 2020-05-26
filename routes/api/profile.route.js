@@ -56,6 +56,7 @@ function escapeRegex(text) {
 }
 router.get("/search", async (req, res) => {
   try {
+    console.log(req.query.search);
     if (req.query.search) {
       const regex = new RegExp(escapeRegex(req.query.search), "gi");
       component = await Profile.find({ topics: regex }, function (err, found) {
@@ -361,8 +362,10 @@ router.delete("/experience/:exp_id", auth, async (req, res) => {
 //@access private
 router.delete("/education/:edu_id", auth, async (req, res) => {
   try {
-    const profile = await Profile.findOne({ user: req.user.id });
-
+    const profile = await Profile.findOne({
+      user: req.user.id,
+    }).populate("user", ["name", "type"]);
+    profile.address = profile.location.formattedAddress;
     //get remove index
     const removeIndex = profile.education
       .map((item) => item.id)

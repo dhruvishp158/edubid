@@ -59,6 +59,7 @@ const Profile = ({
                       <ProfileExperience
                         key={experience._id}
                         experience={experience}
+                        profile={profile}
                       />
                     ))}
                   </Fragment>
@@ -88,6 +89,8 @@ const Profile = ({
                       <ProfileEducation
                         key={education._id}
                         education={education}
+                        profile={profile}
+                        auth={auth}
                       />
                     ))}
                   </Fragment>

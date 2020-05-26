@@ -18,6 +18,7 @@ function SignUp({ setAlert, register, isAuthenticated }) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const onSubmit = (e) => {
+    console.log(type);
     e.preventDefault();
     if (password !== password2) {
       setAlert("Passwords do not match", "danger");
@@ -28,6 +29,9 @@ function SignUp({ setAlert, register, isAuthenticated }) {
   };
 
   if (isAuthenticated) {
+    if (type === "Student") {
+      return <Redirect to='/' />;
+    }
     return <Redirect to='/LogIn' />;
   }
   return (
@@ -56,14 +60,14 @@ function SignUp({ setAlert, register, isAuthenticated }) {
           />
 
           <input
-            type='text'
+            type='password'
             name='password'
             id='password'
             placeholder='Enter your Password'
             onChange={(e) => onChange(e)}
           />
           <input
-            type='text'
+            type='password'
             name='password2'
             id='password2'
             placeholder='Confirm password'

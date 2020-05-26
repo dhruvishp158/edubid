@@ -1,10 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Moment from "react-moment";
+import { deleteEducation } from "../../actions/profile";
+import { connect } from "react-redux";
 
 const ProfieEducation = ({
-  education: { school, degree, fieldofstudy, to, from, description },
+  deleteEducation,
+  profile,
+  auth,
+  education: { school, degree, fieldofstudy, to, from, description, _id },
 }) => {
+  console.log(_id);
   return (
     <div className='profileEducation'>
       <h3 className='dark'>{school}</h3>
@@ -25,12 +31,27 @@ const ProfieEducation = ({
         <strong>Description: </strong>
         {description}
       </p>
+      {auth.isAuthenticated &&
+        auth.loading === false &&
+        auth.user._id === profile.user._id && (
+          <button
+            className='btn btn-danger'
+            onClick={() => deleteEducation(_id)}
+            style={{
+              background: "red",
+              borderRadius: "2rem",
+            }}
+          >
+            DELETE EDUCATION
+          </button>
+        )}
     </div>
   );
 };
 
 ProfieEducation.propTypes = {
   education: PropTypes.object.isRequired,
+  deleteEducation: PropTypes.func.isRequired,
 };
 
-export default ProfieEducation;
+export default connect(null, { deleteEducation })(ProfieEducation);

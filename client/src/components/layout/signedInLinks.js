@@ -11,12 +11,12 @@ const SignedInLinks = ({ logout, profile }) => {
         </NavLink>
       </li>
       <li>
-        <NavLink to='/' className='navLinks'>
+        <NavLink to='/get-address' className='navLinks'>
           TEACHERS
         </NavLink>
       </li>
       <li>
-        <NavLink to='/' className='navLinks'>
+        <NavLink to='/posts' className='navLinks'>
           POSTS
         </NavLink>
       </li>

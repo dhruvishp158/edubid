@@ -8,6 +8,7 @@ const ProfileAbout = ({
     user: { name },
   },
 }) => {
+  console.log(name);
   return (
     <div className='profileAbout'>
       <h2 style={{ textAlign: "center", color: "white", padding: "1rem" }}>

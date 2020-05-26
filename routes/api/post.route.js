@@ -21,16 +21,15 @@ router.post(
     }
     try {
       //   const user = await Users.findById(req.user.id).select("-password");
-      console.log("object");
       let profile = await Profile.findOne({
         user: req.user.id,
       }).populate("user", ["name", "type"]);
-      console.log(profile);
       const newPost = new Post({
         text: req.body.text,
         name: profile.user.name,
         profilePicture: profile.profilePicture,
         user: req.user.id,
+        img: req.body.img,
       });
       const post = await newPost.save();
       res.json(post);
@@ -147,7 +146,7 @@ router.put("/unlike/:id", auth, async (req, res) => {
       .indexOf(req.user.id);
     post.likes.splice(removeIndex, 1);
     await post.save();
-    res.json(post);
+    res.json(post.likes);
   } catch (error) {
     console.error(error.message);
     res.status(500).send("server error");
@@ -169,10 +168,7 @@ router.post(
       //   const user = await Users.findById(req.user.id).select("-password");
       let profile = await Profile.findOne({
         user: req.user.id,
-      })
-        .populate("profilePicture")
-        .populate("user", ["name", "type"]);
-      console.log(profile);
+      }).populate("user", ["name", "type"]);
       const post = await Post.findById(req.params.id);
 
       const newComment = {

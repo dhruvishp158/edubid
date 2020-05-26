@@ -5,7 +5,6 @@ import LogIn from "./components/auth/login";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SignUp from "./components/auth/signUp";
 import GetAddress from "./components/profile-forms/GetAddress";
-import CreateProfile from "./components/profile-forms/CreateProfile";
 import Home from "./components/layout/Home";
 import setAuthToken from "./components/utils/authToken";
 
@@ -21,6 +20,8 @@ import UpdateProfile from "./components/profile-forms/UpdateProfile";
 import AddExperience from "./components/profile-forms/AddExperience";
 import AddEducation from "./components/profile-forms/AddEducation";
 import Profile from "./components/profile/Profile";
+import Posts from "./components/posts/Posts";
+import Post from "./components/post/Post";
 // ===========================================================================================
 
 if (localStorage.token) {
@@ -65,12 +66,9 @@ const App = () => {
                   component={AddEducation}
                 />
 
+                <PrivateRoute exact path='/posts' component={Posts} />
+                <PrivateRoute exact path='/posts/:id' component={Post} />
                 <Route exact path='/get-address' component={GetAddress} />
-                <Route
-                  exact
-                  path='/create-profile'
-                  component={CreateProfileForm}
-                />
               </Switch>
 
               {/* <LogIn /> */}

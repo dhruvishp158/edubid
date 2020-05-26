@@ -20,7 +20,6 @@ function LogIn({ isAuthenticated, login }) {
     login(email, password);
   }
   if (isAuthenticated) {
-    console.log("success");
     return <Redirect to='/dashboard' />;
   }
   return (
@@ -43,7 +42,7 @@ function LogIn({ isAuthenticated, login }) {
             }}
           />
           <input
-            type='text'
+            type='password'
             name='password'
             id='password'
             placeholder='Enter your Password'
