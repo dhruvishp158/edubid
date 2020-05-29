@@ -1,8 +1,5 @@
-# The largest heading
-## The second largest heading
-###### The smallest heading
-Project Title
-One Paragraph of project description goes here
+# EDUBID
+## An educational website (MERN Full Stack, Socket IO)
+•	‘Edubid’ is a website on getting a coach/teacher to learn a single single module/topic or a full course depends on user what they want to learn.
+•	This site will provide such assistance to students and they can find the perfect tutor for their needs. By filtering the location near by  them(let say system will look for a tutor available with in 5 km of area).
 
-Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
