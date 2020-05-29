@@ -19,3 +19,10 @@ const connectDB = async () => {
   }
 };
 module.exports = connectDB;
+
+// const connectDB = mongoose.connect(db, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//   useCreateIndex: true,
+//   useFindAndModify: false,
+// }).then(());

@@ -22,3 +22,6 @@ export const ADD_POST = "ADD_POST";
 export const GET_POST = "GET_POST";
 export const ADD_COMMENT = "ADD_COMMENT";
 export const REMOVE_COMMENT = "REMOVE_COMMENT";
+export const GET_CHATS = "GET_CHATS";
+export const AFTER_POST_MESSAGE = "AFTER_POST_MESSAGE";
+export const GET_SEARCH_RESULT = "GET_SEARCH_RESULT";

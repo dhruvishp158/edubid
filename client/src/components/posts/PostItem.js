@@ -109,7 +109,7 @@ const PostItem = ({
                   margin: "1rem",
                 }}
               >
-                Discussion{" "}
+                Comments{" "}
                 {comments.length > 0 && (
                   <span className='comment-count'>{comments.length}</span>
                 )}

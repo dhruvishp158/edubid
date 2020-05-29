@@ -22,6 +22,7 @@ import AddEducation from "./components/profile-forms/AddEducation";
 import Profile from "./components/profile/Profile";
 import Posts from "./components/posts/Posts";
 import Post from "./components/post/Post";
+import Chat from "./components/chat/Chat";
 // ===========================================================================================
 
 if (localStorage.token) {
@@ -44,6 +45,7 @@ const App = () => {
                 <Route exact path='/LogIn' component={LogIn} />
                 <Route exact path='/SignUp' component={SignUp} />
                 <Route exact path='/profile/:id' component={Profile} />
+                <Route exact path='/chat' component={Chat} />
                 <PrivateRoute exact path='/dashboard' component={Dashboard} />
                 <PrivateRoute
                   exact

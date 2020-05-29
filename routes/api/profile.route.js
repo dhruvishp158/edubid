@@ -54,28 +54,32 @@ router.post("/image", (req, res) => {
 function escapeRegex(text) {
   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 }
-router.get("/search", async (req, res) => {
+router.post("/search", async (req, res) => {
   try {
-    console.log(req.query.search);
-    if (req.query.search) {
-      const regex = new RegExp(escapeRegex(req.query.search), "gi");
+    // console.log(req.query.search);
+    // if (req.query.search) {
+    //   const regex = new RegExp(escapeRegex(req.query.search), "gi");
+    //   component = await Profile.find({ topics: regex }, function (err, found) {
+    //     if (err) {
+    //       console.log(err);
+    //     } else {
+    //       console.log(found);
+    //       return res.json(found);
+    //     }
+    //   });
+    // }
+    const { search } = req.body;
+    if (req.body.search) {
+      const regex = new RegExp(escapeRegex(req.body.search), "gi");
       component = await Profile.find({ topics: regex }, function (err, found) {
         if (err) {
           console.log(err);
         } else {
-          console.log("something");
           return res.json(found);
         }
-      });
+      }).populate("user", ["name", "type"]);
     } else {
-      component = await Profile.find({}, function (err, found) {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log("nothing");
-          return res.json(found);
-        }
-      });
+      res.json(null);
     }
   } catch (error) {
     console.log(error.message);

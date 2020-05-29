@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import logo from "../../images/logo.PNG";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import Search from "./Search";
+import Search from "./search/Search";
 
 function NavBar({ auth: { isAuthenticated, loading } }) {
   return (

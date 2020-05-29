@@ -88,7 +88,7 @@ function SignUp({ setAlert, register, isAuthenticated }) {
               aria-haspopup='true'
               aria-expanded='false'
             >
-              Select Your Type
+              {type === "" ? "Select Your Type" : type}
             </button>
             <div className='dropdown-menu'>
               <a
