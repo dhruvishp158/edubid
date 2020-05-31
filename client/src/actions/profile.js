@@ -5,7 +5,6 @@ import {
   UPDATE_PROFILE,
   ACCOUNT_DELETED,
   CLEAR_PROFILE,
-  GET_REPOS,
 } from "./types";
 import axios from "axios";
 import { setAlert } from "../actions/alert";
@@ -61,24 +60,26 @@ export const createProfile = (data, history, edit = false) => async (
     };
 
     const res = await axios.post("/api/profile", data, config);
+    const response = await axios.get("/api/profile/me");
     dispatch({
       type: GET_PROFILE,
-      payload: res.data,
+      payload: response.data,
     });
     dispatch(setAlert(edit ? "Profile updated" : "Profile created", "success"));
     history.push("/dashboard");
   } catch (error) {
-    const errors = error.response.data.errors;
-    if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
-    }
-    dispatch({
-      type: PROFILE_ERROR,
-      payload: {
-        msg: error.response.statusText,
-        status: error.response.status,
-      },
-    });
+    console.log(error);
+    // const errors = error.response.data.errors;
+    // if (errors) {
+    //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    // }
+    // dispatch({
+    //   type: PROFILE_ERROR,
+    //   payload: {
+    //     msg: error.response.statusText,
+    //     status: error.response.status,
+    //   },
+    // });
   }
 };
 

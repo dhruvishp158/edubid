@@ -33,6 +33,7 @@ const Search = (props) => {
     // };
     // let res = await axios.get(`/api/profile/search?search=${text}`);
     // console.log(res.data);
+
     setText("");
   };
 
@@ -52,9 +53,7 @@ const Search = (props) => {
           autoComplete='off'
           aria-label='Search'
           style={{ color: "white" }}
-          onChange={(e) => {
-            handleChange(e);
-          }}
+          onChange={handleChange}
         />
         <i className='fas fa-search' aria-hidden='true'></i>
       </form>

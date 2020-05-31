@@ -16,7 +16,6 @@ function LogIn({ isAuthenticated, login }) {
   };
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(formData);
     login(email, password);
   }
   if (isAuthenticated) {

@@ -94,9 +94,11 @@ router.get("/me", auth, async (req, res) => {
   try {
     const profile = await Profile.findOne({
       user: req.user.id,
-    }).populate("users", ["name", "avatar", "type"]);
-
+    }).populate("user", ["name", "type"]);
+    console.log(" get me");
+    console.log(profile);
     if (!profile) {
+      console.log("object");
       return res.status(400).json({ msg: "There is no profile for this user" });
     }
     res.json(profile);
@@ -124,7 +126,6 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-
     const {
       profilePicture,
       website,
@@ -150,7 +151,6 @@ router.post(
     if (topics) {
       profileFields.topics = topics.split(",").map((topic) => topic.trim());
     }
-
     //build social object
     profileFields.social = {};
     if (youtube) profileFields.social.youtube = youtube;
@@ -160,7 +160,9 @@ router.post(
     if (instagram) profileFields.social.instagram = instagram;
 
     try {
-      let profile = await Profile.findOne({ user: req.user.id });
+      let profile = await Profile.findOne({
+        user: req.user.id,
+      });
 
       //update
       if (profile) {
@@ -168,12 +170,14 @@ router.post(
           { user: req.user.id },
           { $set: profileFields },
           { new: true }
-        );
+        ).populate("user", ["name", "type"]);
         return res.json(profile);
       }
 
       //create
+
       profile = new Profile(profileFields);
+
       await profile.save();
       res.send(profile);
     } catch (err) {
@@ -273,7 +277,9 @@ router.put(
       description,
     };
     try {
-      const profile = await Profile.findOne({ user: req.user.id });
+      const profile = await Profile.findOne({
+        user: req.user.id,
+      }).populate("user", ["name", "type"]);
       profile.address = profile.location.formattedAddress;
       console.log(profile.address);
       profile.experience.unshift(newExp);
@@ -326,7 +332,9 @@ router.put(
       description,
     };
     try {
-      const profile = await Profile.findOne({ user: req.user.id });
+      const profile = await Profile.findOne({
+        user: req.user.id,
+      }).populate("user", ["name", "type"]);
       profile.address = profile.location.formattedAddress;
       profile.education.unshift(newEdu);
       await profile.save();

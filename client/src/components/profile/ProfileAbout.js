@@ -1,5 +1,7 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
+import { useEffect } from "react";
+import { getCurrentProfile } from "../../actions/profile";
 
 const ProfileAbout = ({
   profile: {
@@ -8,7 +10,6 @@ const ProfileAbout = ({
     user: { name },
   },
 }) => {
-  console.log(name);
   return (
     <div className='profileAbout'>
       <h2 style={{ textAlign: "center", color: "white", padding: "1rem" }}>

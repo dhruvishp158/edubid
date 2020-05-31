@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { useEffect } from "react";
 import Spinner from "../layout/Spinner";
 import { Link } from "react-router-dom";
-import Profile from "../profile/Profile";
+import ProfileForDashBoard from "../profile/ProfileForDashBoard";
 const Dashboard = ({
   getCurrentProfile,
   profile: { profile, loading },
@@ -14,6 +14,7 @@ const Dashboard = ({
   useEffect(() => {
     getCurrentProfile();
   }, [getCurrentProfile]);
+
   return (
     <div className='dash-buttons'>
       {!loading && profile === null ? (
@@ -47,6 +48,7 @@ const Dashboard = ({
               <i className='fas fa-graduation-cap text-primary'></i> Add
               Education
             </Link>
+            {profile && <ProfileForDashBoard thisProfile={profile} />}
           </div>
         </div>
       )}

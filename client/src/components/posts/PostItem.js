@@ -12,7 +12,6 @@ const PostItem = ({
   post: { _id, text, name, user, likes, comments, date, profilePicture, img },
   showActions,
 }) => {
-  console.log(user);
   return (
     <div className='postBody'>
       <div className='BodyWidth'>

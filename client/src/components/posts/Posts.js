@@ -5,7 +5,7 @@ import Spinner from "../layout/Spinner";
 import { connect } from "react-redux";
 import PostItem from "./PostItem";
 import PostForm from "./PostForm";
-const Posts = ({ getPost, post: { posts, loading } }) => {
+const Posts = ({ auth, getPost, post: { posts, loading } }) => {
   useEffect(() => {
     getPost();
   }, [getPost]);
@@ -13,7 +13,8 @@ const Posts = ({ getPost, post: { posts, loading } }) => {
     <Spinner />
   ) : (
     <Fragment>
-      <PostForm />
+      {auth.user !== null && auth.user.type === "Teacher" && <PostForm />}
+
       {posts.map((post) => (
         <PostItem key={post._id} post={post} clg />
       ))}
@@ -28,5 +29,6 @@ Posts.propTypes = {
 
 const mapStateToProps = (state) => ({
   post: state.post,
+  auth: state.auth,
 });
 export default connect(mapStateToProps, { getPost })(Posts);

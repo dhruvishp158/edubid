@@ -5,11 +5,11 @@ import { createProfile } from "../../actions/profile";
 import PropTypes from "prop-types";
 import CreateProfile from "./CreateProfile";
 
-const CreateProfileForm = ({ createProfile, history }) => {
+const CreateProfileForm = ({ auth, createProfile, history }) => {
   const [formData, setFormData] = useState({
     website: "",
     address: "",
-    status: "Teacher",
+    status: "",
     topics: "",
     bio: "",
     twitter: "",
@@ -31,7 +31,7 @@ const CreateProfileForm = ({ createProfile, history }) => {
     youtube,
     instagram,
   } = formData;
-  const data = { ...formData, profilePicture };
+  let data = { ...formData, profilePicture };
   const updateImages = (newImages) => {
     setImages(newImages);
   };
@@ -43,7 +43,11 @@ const CreateProfileForm = ({ createProfile, history }) => {
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(data);
+    let status;
+    if (auth.user) {
+      status = auth.user.type;
+    }
+    data = { ...formData, profilePicture, status };
     createProfile(data, history);
   };
   return (
@@ -211,4 +215,10 @@ const CreateProfileForm = ({ createProfile, history }) => {
 
 CreateProfileForm.propTypes = { createProfile: PropTypes.func.isRequired };
 
-export default connect(null, { createProfile })(withRouter(CreateProfileForm));
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { createProfile })(
+  withRouter(CreateProfileForm)
+);

@@ -10,7 +10,6 @@ const ProfieEducation = ({
   auth,
   education: { school, degree, fieldofstudy, to, from, description, _id },
 }) => {
-  console.log(_id);
   return (
     <div className='profileEducation'>
       <h3 className='dark'>{school}</h3>

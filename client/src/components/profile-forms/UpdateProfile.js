@@ -70,7 +70,6 @@ const UpdateProfile = ({
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(data);
     createProfile(data, history, true);
   };
   return (
