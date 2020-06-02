@@ -2,13 +2,13 @@ import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 // import Spinner from "../layout/Spinner";
-import { getProfileById } from "../../actions/profile";
+import { getProfileById } from "../../../actions/profile";
 import { Link } from "react-router-dom";
-import ProfileTop from "./ProfileTop";
-import ProfileAbout from "./ProfileAbout";
-import ProfileExperience from "./ProfileExperience";
-import ProfileEducation from "./ProfileEducation";
-const Profile = ({
+import ProfileTop from "../../profile/ProfileTop";
+import ProfileAbout from "../../profile/ProfileAbout";
+import ProfileExperience from "../../profile/ProfileExperience";
+import ProfileEducation from "../../profile/ProfileEducation";
+const ProfileForDashBoard = ({
   thisProfile,
   getProfileById,
   profile: { profile, loading },
@@ -96,7 +96,7 @@ const Profile = ({
   );
 };
 
-Profile.propTypes = {
+ProfileForDashBoard.propTypes = {
   getProfileById: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
@@ -106,4 +106,6 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
   auth: state.auth,
 });
-export default connect(mapStateToProps, { getProfileById })(Profile);
+export default connect(mapStateToProps, { getProfileById })(
+  ProfileForDashBoard
+);

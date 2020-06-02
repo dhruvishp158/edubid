@@ -45,8 +45,13 @@ const App = () => {
                 <Route exact path='/LogIn' component={LogIn} />
                 <Route exact path='/SignUp' component={SignUp} />
                 <Route exact path='/profile/:id' component={Profile} />
-                <Route exact path='/chat' component={Chat} />
+                {/* <Route exact path='/chat' component={Chat} /> */}
                 <PrivateRoute exact path='/dashboard' component={Dashboard} />
+                <PrivateRoute
+                  exact
+                  path='/profile/message/:toId'
+                  component={Chat}
+                />
                 <PrivateRoute
                   exact
                   path='/create-profile'

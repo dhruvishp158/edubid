@@ -64,6 +64,14 @@ const GetAddress = (props) => {
         }
       );
     });
+    map.addControl(
+      new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true,
+        },
+        trackUserLocation: true,
+      })
+    );
   }
   useEffect(() => {
     getStores();

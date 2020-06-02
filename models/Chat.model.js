@@ -2,16 +2,40 @@ const mongoose = require("mongoose");
 
 const ChatSchema = new mongoose.Schema(
   {
-    message: {
-      type: String,
-    },
-    sender: {
+    // message: {
+    //   type: String,
+    // },
+    // sender: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: "users",
+    // },
+    // type: {
+    //   type: String,
+    // },
+    user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "users",
     },
-    type: {
-      type: String,
-    },
+    to: [
+      {
+        id: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "users",
+        },
+        messages: [
+          {
+            text: {
+              type: String,
+              required: true,
+            },
+            date: {
+              type: Date,
+              default: Date.now,
+            },
+          },
+        ],
+      },
+    ],
   },
   { timestamps: true }
 );

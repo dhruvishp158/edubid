@@ -12,7 +12,7 @@ export default function (state = {}, action) {
     case AFTER_POST_MESSAGE:
       return {
         ...state,
-        chats: state.chats.concat(payload),
+        chats: { user: state.chats.user, friend: payload },
       };
 
     default:

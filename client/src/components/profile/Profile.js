@@ -18,6 +18,7 @@ const Profile = ({
     getProfileById(match.params.id);
   }, [getProfileById, match.params.id]);
 
+  let toId = match.params.id;
   return (
     <Fragment>
       {profile === null || loading ? (
@@ -35,6 +36,11 @@ const Profile = ({
                 Edit Profile
               </Link>
             )}
+          {auth.isAuthenticated && auth.loading === false && (
+            <Link to={`message/${toId}`} className='btn btn-dark'>
+              Message
+            </Link>
+          )}
           <div className='profile-grid my-1'>
             <ProfileTop profile={profile} />
             <ProfileAbout profile={profile} />
