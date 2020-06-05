@@ -7,10 +7,7 @@ const Profiles = ({
     user: { _id, name, type },
     status,
     profilePicture,
-    location,
     topics,
-    website,
-    bio,
   },
 }) => {
   return (

@@ -9,8 +9,6 @@ const ProfileExperience = ({
   deleteExperience,
   experience: { company, title, to, from, description, _id },
 }) => {
-  console.log(profile);
-  console.log(_id);
   return (
     <div className='profileExperience'>
       <h3 className='dark'>{company}</h3>

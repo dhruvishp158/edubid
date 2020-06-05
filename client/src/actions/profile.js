@@ -168,9 +168,7 @@ export const getProfileById = (userId) => async (dispatch) => {
 
 export const deleteExperience = (id) => async (dispatch) => {
   try {
-    console.log(id);
     const res = await axios.delete(`/api/profile/experience/${id}`);
-    console.log(res.data);
     dispatch({
       type: UPDATE_PROFILE,
       payload: res.data,

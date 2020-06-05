@@ -22,15 +22,6 @@ const fs = require("fs");
 // @access  private
 router.get("/:toId", auth, async (req, res) => {
   try {
-    // const user = await Chat.findOne({ user: req.user.id });
-
-    // let to = user.to.filter((to) => to.id.toString() === req.params.toId);
-
-    // if (to.length > 0) {
-    //   return res.json(to);
-    // }
-
-    // return res.send(null);
     const toUser = await Chat.findOne({ user: req.user.id }).populate("user", [
       "name",
       "type",
@@ -38,10 +29,8 @@ router.get("/:toId", auth, async (req, res) => {
     const fromUser = await Chat.findOne({
       user: req.params.toId,
     }).populate("user", ["name", "type"]);
-    console.log(fromUser);
     let fromMessages = [];
     let toMessages = [];
-
     if (toUser) {
       toMessages = toUser.to.filter(
         (to) => to.id.toString() === req.params.toId
@@ -53,29 +42,38 @@ router.get("/:toId", auth, async (req, res) => {
       );
     }
 
-    const messages = {
-      user: null,
-      friend: null,
-    };
+    // const messages = {
+    //   user: null,
+    //   friend: null,
+    // };
+    const messages = [];
     if (fromMessages.length != 0) {
-      messages.user = fromMessages[0];
-      // messages.info.user = toUser.user;
-      // console.log(messages.info.user);
+      //   console.log(typeof fromMessages[0]);
+      //   messages.user = fromMessages[0];
+      fromMessages = fromMessages[0].messages.map((m) => {
+        const { date, _id, text } = m;
+        return { date, text, _id, id: req.params.toId };
+      });
+      messages.push(...fromMessages);
     }
     if (toMessages.length != 0) {
-      messages.friend = toMessages[0];
-      // messages.info.friend = fromUser;
+      //   messages.friend = toMessages[0];
+      toMessages = toMessages[0].messages.map((m) => {
+        const { date, _id, text } = m;
+        return { date, text, _id, id: req.user.id };
+      });
+      messages.push(...toMessages);
     }
 
+    messages.sort((a, b) => {
+      return new Date(a.date) - new Date(b.date);
+    });
     return res.send(messages);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("server error");
   }
 });
-
-// @route   GET api/message/:id
-// @desc    s
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -84,13 +82,6 @@ var storage = multer.diskStorage({
   filename: function (req, file, cb) {
     cb(null, `${Date.now()}_${file.originalname}`);
   },
-  // fileFilter: (req, file, cb) => {
-  //   const ext = path.extname(file.originalname);
-  //   if (ext !== ".jpg" || ext !== ".jpeg" || ext !== "png") {
-  //     return cb(res.status(400).end("only image please!"), end);
-  //   }
-  //   cb(null, true);
-  // },
 });
 
 var upload = multer({ storage: storage }).single("file");

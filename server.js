@@ -32,9 +32,9 @@ connectDB();
 io.on("connect", (socket) => {
   socket.on("Input chat message", async (msg) => {
     try {
-      if (msg.userId === msg.tId) {
-        return res.json({ msg: "cannot send to yourself" });
-      }
+      // if (msg.userId === msg.tId) {
+      //   return res.json({ msg: "cannot send to yourself" });
+      // }
 
       let mesRetreived = await Chat.findOne({ user: msg.userId });
 

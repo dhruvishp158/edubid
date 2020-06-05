@@ -53,7 +53,6 @@ export const getSinglePost = (id) => async (dispatch) => {
 
 //add like
 export const addLike = (id) => async (dispatch) => {
-  console.log(id);
   try {
     const res = await axios.put(`/api/post/likes/${id}`);
     dispatch({
@@ -152,7 +151,6 @@ export const addComment = (postId, formData) => async (dispatch) => {
       config
     );
 
-    console.log(formData, res.data);
     dispatch({
       type: ADD_COMMENT,
       payload: res.data,

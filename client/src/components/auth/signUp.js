@@ -18,12 +18,10 @@ function SignUp({ setAlert, register, isAuthenticated }) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const onSubmit = (e) => {
-    console.log(type);
     e.preventDefault();
     if (password !== password2) {
       setAlert("Passwords do not match", "danger");
     } else {
-      console.log(formData);
       register({ name, email, password, type });
     }
   };

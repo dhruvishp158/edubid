@@ -39,7 +39,6 @@ var upload = multer({ storage: storage }).single("file");
 router.post("/image", (req, res) => {
   upload(req, res, (err) => {
     if (err) return res.json({ success: false, err });
-    console.log(res.req.file.filename);
     return res.json({
       success: true,
       image: res.req.file.path,
@@ -56,19 +55,6 @@ function escapeRegex(text) {
 }
 router.post("/search", async (req, res) => {
   try {
-    // console.log(req.query.search);
-    // if (req.query.search) {
-    //   const regex = new RegExp(escapeRegex(req.query.search), "gi");
-    //   component = await Profile.find({ topics: regex }, function (err, found) {
-    //     if (err) {
-    //       console.log(err);
-    //     } else {
-    //       console.log(found);
-    //       return res.json(found);
-    //     }
-    //   });
-    // }
-    const { search } = req.body;
     if (req.body.search) {
       const regex = new RegExp(escapeRegex(req.body.search), "gi");
       component = await Profile.find({ topics: regex }, function (err, found) {
@@ -82,7 +68,7 @@ router.post("/search", async (req, res) => {
       res.json(null);
     }
   } catch (error) {
-    console.log(error.message);
+    console.error(error.message);
     res.status(500).send("server error");
   }
 });
@@ -95,10 +81,8 @@ router.get("/me", auth, async (req, res) => {
     const profile = await Profile.findOne({
       user: req.user.id,
     }).populate("user", ["name", "type"]);
-    console.log(" get me");
-    console.log(profile);
+
     if (!profile) {
-      console.log("object");
       return res.status(400).json({ msg: "There is no profile for this user" });
     }
     res.json(profile);
@@ -281,7 +265,6 @@ router.put(
         user: req.user.id,
       }).populate("user", ["name", "type"]);
       profile.address = profile.location.formattedAddress;
-      console.log(profile.address);
       profile.experience.unshift(newExp);
       await profile.save();
       res.json(profile);
@@ -399,7 +382,6 @@ router.get("/address", async (req, res) => {
     for (let i = 0; i < data.length; i++) {
       stores.push(data[i].location);
     }
-    console.log(stores);
 
     return res
       .status(200)

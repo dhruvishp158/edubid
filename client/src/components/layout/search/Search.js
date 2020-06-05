@@ -12,7 +12,6 @@ const Search = (props) => {
   const handleChange = async (e) => {
     setText(e.target.value);
     let search = e.target.value;
-    console.log(search);
 
     const config = {
       headers: {
@@ -25,15 +24,6 @@ const Search = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // let search = text;
-    // const config = {
-    //   Params: {
-    //     search: text,
-    //   },
-    // };
-    // let res = await axios.get(`/api/profile/search?search=${text}`);
-    // console.log(res.data);
-
     setText("");
   };
 

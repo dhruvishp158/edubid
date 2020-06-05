@@ -36,11 +36,13 @@ const Profile = ({
                 Edit Profile
               </Link>
             )}
-          {auth.isAuthenticated && auth.loading === false && (
-            <Link to={`message/${toId}`} className='btn btn-dark'>
-              Message
-            </Link>
-          )}
+          {auth.isAuthenticated &&
+            auth.loading === false &&
+            auth.user._id !== toId && (
+              <Link to={`message/${toId}`} className='btn btn-dark'>
+                Message
+              </Link>
+            )}
           <div className='profile-grid my-1'>
             <ProfileTop profile={profile} />
             <ProfileAbout profile={profile} />
