@@ -378,14 +378,24 @@ router.delete("/education/:edu_id", auth, async (req, res) => {
 router.get("/address", async (req, res) => {
   try {
     const data = await Profile.find();
+    const data2 = await Profile.find().populate("user", ["name", "type"]);
+    let store2 = [];
+    for (let i = 0; i < data2.length; i++) {
+      if (data2[i].user.type === "Teacher") {
+        store2.push(data2[i]);
+      }
+    }
     const stores = [];
     for (let i = 0; i < data.length; i++) {
       stores.push(data[i].location);
     }
 
-    return res
-      .status(200)
-      .json({ success: true, count: stores.length, data: stores });
+    return res.status(200).json({
+      success: true,
+      count: stores.length,
+      data: stores,
+      data2: store2,
+    });
   } catch (err) {
     console.log(err.message);
     res.status(500).json("server error");

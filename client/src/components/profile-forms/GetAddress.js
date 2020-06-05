@@ -1,26 +1,29 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import mapboxgl from "mapbox-gl";
-
+import Direction from "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions";
 const GetAddress = (props) => {
-  //fetch api
-
   async function getStores() {
     const res = await fetch("/api/profile/address");
     const data = await res.json();
+
     console.log(data);
-    const stores = data.data.map((store) => {
+    const stores = data.data2.map((store) => {
       console.log(store);
       return {
         type: "Feature",
         geometry: {
           type: "Point",
-          coordinates: [store.coordinates[0], store.coordinates[1]],
+          coordinates: [
+            store.location.coordinates[0],
+            store.location.coordinates[1],
+          ],
         },
         properties: {
           _id: store._id,
-          title: store.formattedAddress,
+          title: store.location.formattedAddress,
           icon: "town-hall",
+          // icon: <img src={`http://localhost:3000/${store.profilePicture}`} />,
         },
       };
     });
@@ -34,7 +37,8 @@ const GetAddress = (props) => {
       container: "map",
       style: "mapbox://styles/mapbox/streets-v11",
       zoom: 14,
-      center: [-73.5745913, 45.4874488],
+      // center: [-73.5745913, 45.4874488],
+      center: [-73.58227, 45.49269],
     });
 
     map.on("load", function () {
@@ -64,6 +68,12 @@ const GetAddress = (props) => {
         }
       );
     });
+    map.addControl(
+      new Direction({
+        accessToken: mapboxgl.accessToken,
+      }),
+      "top-left"
+    );
     map.addControl(
       new mapboxgl.GeolocateControl({
         positionOptions: {
