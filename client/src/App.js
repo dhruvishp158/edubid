@@ -7,8 +7,7 @@ import SignUp from "./components/auth/signUp";
 import GetAddress from "./components/profile-forms/GetAddress";
 import Home from "./components/layout/Home";
 import setAuthToken from "./components/utils/authToken";
-
-//storeofile
+//store
 import store from "./store";
 import { Provider } from "react-redux";
 import Alert from "./components/layout/alert";

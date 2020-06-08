@@ -398,6 +398,30 @@ input[type="submit"] {
   padding: 5px 10px;
   border-radius: 3px;
 }
+.forMap {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  color: black;
+  font-size: 1rem;
+  background: rgb(201, 197, 191);
+}
+.forMap label {
+  color: black;
+  font-size: 1rem;
+}
+/* radio */
+[type="radio"]:not(:checked),
+[type="radio"]:checked {
+  position: absolute;
+  opacity: 1;
+  pointer-events: none;
+}
+
+[type="radio"]:not(:checked),
+[type="radio"]:checked {
+  position: absolute;
+  margin-top: 1.4rem;
+}
 
 @-webkit-keyframes ab {
   0% {

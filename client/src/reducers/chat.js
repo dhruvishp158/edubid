@@ -9,12 +9,6 @@ export default function (state = {}, action) {
         ...state,
         chats: payload,
       };
-    // case AFTER_POST_MESSAGE:
-    //   return {
-    //     ...state,
-    //     chats: payload,
-    //     // { user: state.chats.user, friend: payload },
-    //   };
 
     default:
       return state;

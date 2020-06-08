@@ -5,13 +5,8 @@ import { GET_RECEIVER_PROFILE } from "../../actions/types";
 import { getProfileById } from "../../actions/profile";
 import { connect } from "react-redux";
 function ChatCard(props, { getProfileById }) {
-  // const getToProfile = async () => {
-  //   let res = await axios.get(`/api/profile/user/${props.to}`);
-  //   props.dispatch({ type: GET_RECEIVER_PROFILE, payload: res.data });
-  // };
   console.log(props);
   useEffect(() => {
-    // getToProfile();
     props.getProfileById(props.to);
   }, [getProfileById, props.to]);
 

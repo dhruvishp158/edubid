@@ -69,17 +69,6 @@ export const createProfile = (data, history, edit = false) => async (
     history.push("/dashboard");
   } catch (error) {
     console.log(error);
-    // const errors = error.response.data.errors;
-    // if (errors) {
-    //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
-    // }
-    // dispatch({
-    //   type: PROFILE_ERROR,
-    //   payload: {
-    //     msg: error.response.statusText,
-    //     status: error.response.status,
-    //   },
-    // });
   }
 };
 

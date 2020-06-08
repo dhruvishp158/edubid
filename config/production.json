@@ -1,0 +1,6 @@
+{
+  "mongoURI": "mongodb+srv://dhruvish:dhruvish@edubid-fvqgb.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "mySecret",
+  "GEOCODER_PROVIDER": "mapquest",
+  "GEOCODER_API_KEY": "Nq6uHIWGrs1PmGSIdzhRGA9m298cPWAG"
+}

@@ -8,34 +8,9 @@ const server = require("http").createServer(app);
 const io = require("socket.io")(server);
 connectDB();
 
-// io.on("connect", (socket) => {
-//   socket.on("Input chat message", (msg) => {
-//     try {
-//       let chat = new Chat({
-//         message: msg.chatMessage,
-//         sender: msg.userId,
-//         type: msg.type,
-//       });
-//       chat.save((err, doc) => {
-//         if (err) return res.json({ success: false, err });
-//         Chat.find({ _id: doc._id })
-//           .populate("sender")
-//           .exec((err, doc) => {
-//             return io.emit("Output chat message", doc);
-//           });
-//       });
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   });
-// });
 io.on("connect", (socket) => {
   socket.on("Input chat message", async (msg) => {
     try {
-      // if (msg.userId === msg.tId) {
-      //   return res.json({ msg: "cannot send to yourself" });
-      // }
-
       let mesRetreived = await Chat.findOne({ user: msg.userId });
 
       const message = {
@@ -72,8 +47,6 @@ io.on("connect", (socket) => {
 
       mesRetreived.save();
       return io.emit("Output chat message", mesRetreived);
-
-      // res.json(mesRetreived);
     } catch (error) {
       console.error(error);
     }

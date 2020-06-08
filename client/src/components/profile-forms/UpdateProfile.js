@@ -89,6 +89,7 @@ const UpdateProfile = ({
             <label htmlFor='address' style={{ fontSize: "1.4rem" }}>
               Address
             </label>
+            <br />
             <input
               type='text'
               placeholder='address'
@@ -103,6 +104,7 @@ const UpdateProfile = ({
             <label htmlFor='address' style={{ fontSize: "1.4rem" }}>
               Website
             </label>
+            <br />
             <input
               type='text'
               placeholder='Website'
@@ -119,6 +121,7 @@ const UpdateProfile = ({
             <label htmlFor='address' style={{ fontSize: "1.4rem" }}>
               Topics
             </label>
+            <br />
             <input
               type='text'
               placeholder='* Topics'
@@ -135,6 +138,7 @@ const UpdateProfile = ({
             <label htmlFor='address' style={{ fontSize: "1.4rem" }}>
               Bio
             </label>
+            <br />
             <input
               type='text'
               placeholder='A short bio of yourself'
@@ -152,7 +156,7 @@ const UpdateProfile = ({
               className='btn btn-light'
               style={{ borderRadius: "1rem", margin: "1rem" }}
             >
-              Add Social Network Links
+              Update Social Network Links
             </button>
           </div>
 
@@ -161,6 +165,7 @@ const UpdateProfile = ({
               {" "}
               <div className='form-group social-input'>
                 <i className='fab fa-twitter fa-2x'></i>
+                <br />
                 <input
                   type='text'
                   placeholder='Twitter URL'
@@ -171,6 +176,7 @@ const UpdateProfile = ({
               </div>
               <div className='form-group social-input'>
                 <i className='fab fa-facebook fa-2x'></i>
+                <br />
                 <input
                   type='text'
                   placeholder='Facebook URL'
@@ -181,6 +187,7 @@ const UpdateProfile = ({
               </div>
               <div className='form-group social-input'>
                 <i className='fab fa-youtube fa-2x'></i>
+                <br />
                 <input
                   type='text'
                   placeholder='YouTube URL'
@@ -191,6 +198,7 @@ const UpdateProfile = ({
               </div>
               <div className='form-group social-input'>
                 <i className='fab fa-linkedin fa-2x'></i>
+                <br />
                 <input
                   type='text'
                   placeholder='Linkedin URL'
@@ -201,6 +209,7 @@ const UpdateProfile = ({
               </div>
               <div className='form-group social-input'>
                 <i className='fab fa-instagram fa-2x'></i>
+                <br />
                 <input
                   type='text'
                   placeholder='Instagram URL'

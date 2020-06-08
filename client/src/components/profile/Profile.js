@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-// import Spinner from "../layout/Spinner";
 import { getProfileById } from "../../actions/profile";
 import { Link } from "react-router-dom";
 import ProfileTop from "./ProfileTop";
@@ -22,11 +21,18 @@ const Profile = ({
   return (
     <Fragment>
       {profile === null || loading ? (
-        // <Spinner />
         <h1>You do not have any profile</h1>
       ) : (
         <Fragment>
-          <Link to='/' className='btn btn-light' style={{ margin: "1rem" }}>
+          <Link
+            to='/'
+            className='btn btn-light'
+            style={{
+              marginTop: "1rem",
+              marginBottom: "1rem",
+              marginRight: "1rem",
+            }}
+          >
             Back To Profiles
           </Link>
           {auth.isAuthenticated &&

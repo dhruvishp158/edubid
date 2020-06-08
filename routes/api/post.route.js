@@ -165,7 +165,6 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
     try {
-      //   const user = await Users.findById(req.user.id).select("-password");
       let profile = await Profile.findOne({
         user: req.user.id,
       }).populate("user", ["name", "type"]);

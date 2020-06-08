@@ -4,7 +4,6 @@ import DropZone from "react-dropzone";
 import { getChats, afterPostMessage } from "../../actions/chat";
 import { connect } from "react-redux";
 import ChatCard from "./ChatCard";
-// import moment from "react-moment";
 import axios from "axios";
 export class Chat extends Component {
   constructor(props) {
@@ -93,7 +92,11 @@ export class Chat extends Component {
   render() {
     return (
       <div>
-        <a className='btn btn-primary' href='/'>
+        <a
+          className='btn btn-primary'
+          href='/'
+          style={{ marginTop: "1rem", marginBottom: "1rem" }}
+        >
           GO BACK TO PROFILE
         </a>
         <div>
@@ -108,7 +111,6 @@ export class Chat extends Component {
               background: "black",
               padding: "1rem",
               style: "relative",
-              // color: "white",
             }}
           >
             {this.handleDiv()}
@@ -175,42 +177,3 @@ const mapStateToProps = (state) => ({
   chats: state.chat,
 });
 export default connect(mapStateToProps)(Chat);
-// {
-//   /* <input
-//                     id='message'
-//                     type='text'
-//                     placeholder='Type your message...'
-//                     style={{ border: "1px solid black" }}
-//                     value={this.state.chatMessage}
-//                     onChange={(e) => {
-//                       this.handleChange(e);
-//                     }}
-//                   /> */
-// }
-// {
-//   /* <input type='submit' style={{ width: "100%" }} value='send' /> */
-// }
-// <div>
-// <DropZone onDrop={this.onDrop}>
-//   {({ getRootProps, getInputProps }) => (
-//     <section style={{ textAlign: "center" }}>
-//       <div
-//         {...getRootProps()}
-//         style={{
-//           textAlign: "center",
-//           paddingTop: "5px",
-//           borderRadius: "50%",
-//           background: "white",
-//         }}
-//       >
-//         <input {...getInputProps()} />
-//         {/* <button>Drop here</button> */}
-//         <i
-//           class='fas fa-paperclip'
-//           style={{ fontSize: "2rem" }}
-//         ></i>
-//       </div>
-//     </section>
-//   )}
-// </DropZone>
-// </div>

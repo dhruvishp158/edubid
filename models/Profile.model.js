@@ -15,7 +15,6 @@ const ProfileSchema = new mongoose.Schema({
     required: true,
   },
 
-  //need to add
   profilePicture: {
     type: Array,
     default: [],
@@ -135,7 +134,6 @@ ProfileSchema.pre("save", async function (next) {
     coordinates: [loc[0].longitude, loc[0].latitude],
     formattedAddress: loc[0].formattedAddress,
   };
-  //Do not save address
   this.address = undefined;
   next();
 });

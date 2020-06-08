@@ -69,13 +69,17 @@ const CreateProfileForm = ({ auth, createProfile, history }) => {
             <label htmlFor='address' style={{ fontSize: "1.4rem" }}>
               Address
             </label>
+            <br />
             <input
               type='text'
               placeholder='address'
               name='address'
               value={address}
               onChange={(e) => onChange(e)}
-              style={{ border: "1px solid black", padding: "10px" }}
+              style={{
+                border: "1px solid black",
+                padding: "10px",
+              }}
             />
             <small className='form-text'>Could be yours or you work for</small>
           </div>
@@ -83,6 +87,7 @@ const CreateProfileForm = ({ auth, createProfile, history }) => {
             <label htmlFor='address' style={{ fontSize: "1.4rem" }}>
               Website
             </label>
+            <br />
             <input
               type='text'
               placeholder='Website'
@@ -98,6 +103,7 @@ const CreateProfileForm = ({ auth, createProfile, history }) => {
             <label htmlFor='address' style={{ fontSize: "1.4rem" }}>
               Topics
             </label>
+            <br />
             <input
               type='text'
               placeholder='* Topics'
@@ -114,6 +120,7 @@ const CreateProfileForm = ({ auth, createProfile, history }) => {
             <label htmlFor='address' style={{ fontSize: "1.4rem" }}>
               Bio
             </label>
+            <br />
             <input
               type='text'
               placeholder='A short bio of yourself'
@@ -140,6 +147,7 @@ const CreateProfileForm = ({ auth, createProfile, history }) => {
               {" "}
               <div className='form-group social-input'>
                 <i className='fab fa-twitter fa-2x'></i>
+                <br />
                 <input
                   type='text'
                   placeholder='Twitter URL'
@@ -150,6 +158,7 @@ const CreateProfileForm = ({ auth, createProfile, history }) => {
               </div>
               <div className='form-group social-input'>
                 <i className='fab fa-facebook fa-2x'></i>
+                <br />
                 <input
                   type='text'
                   placeholder='Facebook URL'
@@ -160,6 +169,7 @@ const CreateProfileForm = ({ auth, createProfile, history }) => {
               </div>
               <div className='form-group social-input'>
                 <i className='fab fa-youtube fa-2x'></i>
+                <br />
                 <input
                   type='text'
                   placeholder='YouTube URL'
@@ -170,6 +180,7 @@ const CreateProfileForm = ({ auth, createProfile, history }) => {
               </div>
               <div className='form-group social-input'>
                 <i className='fab fa-linkedin fa-2x'></i>
+                <br />
                 <input
                   type='text'
                   placeholder='Linkedin URL'
@@ -180,6 +191,7 @@ const CreateProfileForm = ({ auth, createProfile, history }) => {
               </div>
               <div className='form-group social-input'>
                 <i className='fab fa-instagram fa-2x'></i>
+                <br />
                 <input
                   type='text'
                   placeholder='Instagram URL'

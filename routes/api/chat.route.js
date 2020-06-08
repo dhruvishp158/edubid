@@ -5,17 +5,6 @@ const { Chat } = require("../../models/Chat.model");
 const auth = require("../../middleware/auth");
 const multer = require("multer");
 const fs = require("fs");
-//@route  get api/chat/getChats
-//@desc   get all chat
-//@access private
-// router.get("/getChats", auth, (req, res) => {
-//   Chat.find()
-//     .populate("sender")
-//     .exec((err, chats) => {
-//       if (err) return res.status(400).send(err);
-//       res.status(200).send(chats);
-//     });
-// });
 
 // @route   GET api/message/:id
 // @desc    get messages
@@ -42,14 +31,8 @@ router.get("/:toId", auth, async (req, res) => {
       );
     }
 
-    // const messages = {
-    //   user: null,
-    //   friend: null,
-    // };
     const messages = [];
     if (fromMessages.length != 0) {
-      //   console.log(typeof fromMessages[0]);
-      //   messages.user = fromMessages[0];
       fromMessages = fromMessages[0].messages.map((m) => {
         const { date, _id, text } = m;
         return { date, text, _id, id: req.params.toId };
@@ -57,7 +40,6 @@ router.get("/:toId", auth, async (req, res) => {
       messages.push(...fromMessages);
     }
     if (toMessages.length != 0) {
-      //   messages.friend = toMessages[0];
       toMessages = toMessages[0].messages.map((m) => {
         const { date, _id, text } = m;
         return { date, text, _id, id: req.user.id };
