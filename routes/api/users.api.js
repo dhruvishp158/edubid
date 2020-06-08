@@ -30,8 +30,8 @@ router.post(
     const { name, email, password, type } = req.body;
     //see if user exist
 
-    const initial = name.split(" ");
-    const initials = initial[0][0] + initial[1][0];
+    // const initial = name.split(" ");
+    // const initials = initial[0][0] + initial[1][0];
     try {
       let user = await Users.findOne({ email });
       if (user) {
@@ -45,7 +45,6 @@ router.post(
         email,
         type,
         password,
-        initials,
       });
 
       //Encrypt Password
