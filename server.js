@@ -59,14 +59,19 @@ app.use(express.json({ extended: false }));
 // app.use(cors({ credentials: false, origin: "http://localhost:7000" }));
 app.use("/uploads", express.static("uploads"));
 
-app.get("/", (req, res) => {
-  res.send("API is running 7000..");
-});
 //Define routes from api folder
 app.use("/api/users", require("./routes/api/users.api"));
 app.use("/api/auth", require("./routes/api/auth.route"));
 app.use("/api/profile", require("./routes/api/profile.route"));
 app.use("/api/post", require("./routes/api/post.route"));
 app.use("/api/chat", require("./routes/api/chat.route"));
+
+//server static assests and production
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 const PORT = process.env.PORT || 7000;
 server.listen(PORT, () => console.log(`server started on port ${PORT}`));
