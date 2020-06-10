@@ -10,8 +10,8 @@ import Search from "./search/Search";
 function NavBar({ auth: { isAuthenticated, loading } }) {
   return (
     <nav
-      class='navbar navbar-expand-lg '
-      style={{ height: "auto", background: "black", marginBottom: "1rem" }}
+      class='navbar navbar-expand-lg navbar-dark bg-dark'
+      style={{ height: "auto", marginBottom: "1rem" }}
     >
       <Link to='/' className='navbar-brand'>
         <img src={logo} style={{ width: "120px" }} alt='for logo' />
