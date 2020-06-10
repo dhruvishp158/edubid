@@ -4,7 +4,7 @@ import { logout } from "../../actions/auth";
 import { connect } from "react-redux";
 const SignedInLinks = ({ logout, profile }) => {
   return (
-    <ul className='right'>
+    <ul class='navbar-nav mr-auto'>
       <li>
         <NavLink to='/dashboard' className='navLinks'>
           DASHBOARD
@@ -25,11 +25,11 @@ const SignedInLinks = ({ logout, profile }) => {
           <span className='hide-sm'>LOGOUT</span>
         </a>
       </li>
-      <li>
+      {/* <li>
         <NavLink to='/' className='btn btn-floating pink lighten-1'>
           DP
         </NavLink>
-      </li>
+      </li> */}
     </ul>
   );
 };

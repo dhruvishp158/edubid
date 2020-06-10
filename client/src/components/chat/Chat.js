@@ -18,7 +18,7 @@ export class Chat extends Component {
       process.env.NODE_ENV === "production"
         ? window.location.hostname
         : "http://localhost:7000";
-    const server = "http://localhost:7000";
+    // const server = "http://localhost:7000";
     this.props.dispatch(getChats(toId));
     this.socket = io(socketURL);
     this.socket.on("Output chat message", (messageFromBackEnd) => {

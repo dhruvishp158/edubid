@@ -28,12 +28,13 @@ const Search = (props) => {
   };
 
   return (
-    <div style={{ margin: "0 auto" }}>
+    <div>
       <form
-        className='form-inline '
+        className='form-inline my-2 my-lg-0'
         onSubmit={(e) => {
           handleSubmit(e);
         }}
+        style={{ display: "block" }}
       >
         <input
           className='form-control form-control-sm mr-3 w-75'
