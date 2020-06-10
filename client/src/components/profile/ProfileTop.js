@@ -17,11 +17,7 @@ const ProfileTop = ({
   return (
     <div className='profile-top'>
       <div className='forTop'>
-        <img
-          className='round-img my-1'
-          src={`http://localhost:3000/${profilePicture}`}
-          alt=''
-        />
+        <img className='round-img my-1' src={`\\${profilePicture}`} alt='' />
       </div>
       {/* <div className='for-profile-img'> */}
 
