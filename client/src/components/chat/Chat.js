@@ -135,7 +135,15 @@ export class Chat extends Component {
                           <input {...getInputProps()} />{" "}
                           <span
                             className='input-group-text attach_btn'
-                            style={{ height: "44.5px" }}
+                            style={{
+                              width: "45.5px",
+                              height: "44.5px",
+                              borderRadius: "50%",
+                              padding: "1rem",
+                              marginRight: "1rem",
+                              fontWeight: "bold",
+                              background: "white",
+                            }}
                           >
                             <i className='fas fa-paperclip'></i>
                           </span>
@@ -152,12 +160,24 @@ export class Chat extends Component {
                     onChange={(e) => {
                       this.handleChange(e);
                     }}
-                    style={{ paddingLeft: "1rem", background: "white" }}
+                    style={{
+                      paddingLeft: "1rem",
+                      background: "white",
+                      height: "44.5px",
+                      borderRadius: "2rem",
+                    }}
                   />
                   <button
                     type='submit'
                     className='input-group-text send_btn'
-                    style={{ height: "44.5px" }}
+                    style={{
+                      height: "44.5px",
+                      borderRadius: "50%",
+                      padding: "1rem",
+                      marginLeft: "1rem",
+                      background: "white",
+                      fontWeight: "bold",
+                    }}
                   >
                     <i className='fas fa-location-arrow'></i>
                   </button>

@@ -50,14 +50,16 @@ function ChatCard(props, { getProfileById }) {
         <div>
           {props.chat.text.substring(props.chat.text.length - 3) === "mp4" ? (
             <video
-              src={`http://localhost:3000/${props.chat.text}`}
+              // src={`http://localhost:3000/${props.chat.text}`}
+              src={`\\${props.chat.text}`}
               typeof='video/mp4'
               controls
               style={{ width: "300px", height: "300px" }}
             />
           ) : (
             <img
-              src={`http://localhost:3000/${props.chat.text}`}
+              // src={`http://localhost:3000/${props.chat.text}`}
+              src={`\\${props.chat.text}`}
               style={{ width: "300px", height: "300px" }}
               alt=''
             />
