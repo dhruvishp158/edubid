@@ -17,7 +17,9 @@ const Profiles = ({
           <div className='part1-1'>
             <img
               className='round-img'
-              src={`http://localhost:3000/${profilePicture}`}
+              // src={`http://localhost:3000/${profilePicture}`}
+              src={`\\${profilePicture}`}
+              alt=''
               alt='profile'
               style={{ width: "200px", height: "200px", borderRadius: "50%" }}
             />{" "}

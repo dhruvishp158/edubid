@@ -7,7 +7,8 @@ function SearchItem(data) {
       <a className='searchA' href={`profile/${data.data.user._id}`}>
         <div>
           <img
-            src={`http://localhost:3000/${data.data.profilePicture}`}
+            // src={`http://localhost:3000/${data.data.profilePicture}`}
+            src={`\\${data.data.profilePicture}`}
             style={{
               width: "50px",
               height: "50px",

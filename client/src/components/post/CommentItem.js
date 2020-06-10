@@ -18,7 +18,8 @@ const CommentItem = ({
             <div style={{ textAlign: "center" }}>
               <img
                 className='round-img'
-                src={`http://localhost:3000/${profilePicture}`}
+                // src={`http://localhost:3000/${profilePicture}`}
+                src={`\\${profilePicture}`}
                 style={{
                   width: "55px",
                   height: "55px",

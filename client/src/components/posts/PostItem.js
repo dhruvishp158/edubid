@@ -20,7 +20,8 @@ const PostItem = ({
             <div style={{ textAlign: "center" }}>
               <img
                 className='round-img'
-                src={`http://localhost:3000/${profilePicture}`}
+                // src={`http://localhost:3000/${profilePicture}`}
+                src={`\\${profilePicture}`}
                 style={{
                   width: "55px",
                   height: "55px",
@@ -59,7 +60,8 @@ const PostItem = ({
             >
               <img
                 className='round-img postImage'
-                src={`http://localhost:3000/${img}`}
+                // src={`http://localhost:3000/${img}`}
+                src={`\\${img}`}
                 alt=''
               />
             </div>
