@@ -48,6 +48,7 @@ const AddEducation = ({ addEducation, history }) => {
             <label htmlFor='address' style={{ fontSize: "1.4rem" }}>
               School or University
             </label>
+            <br />
             <input
               type='text'
               placeholder='* School or University'
@@ -61,6 +62,7 @@ const AddEducation = ({ addEducation, history }) => {
             <label htmlFor='address' style={{ fontSize: "1.4rem" }}>
               Degree
             </label>
+            <br />
             <input
               type='text'
               placeholder='* Degree or Certificate'
@@ -74,6 +76,7 @@ const AddEducation = ({ addEducation, history }) => {
             <label htmlFor='address' style={{ fontSize: "1.4rem" }}>
               Field of study
             </label>
+            <br />
             <input
               type='text'
               placeholder='Field of study'
@@ -127,6 +130,7 @@ const AddEducation = ({ addEducation, history }) => {
             <label htmlFor='address' style={{ fontSize: "1.4rem" }}>
               Description
             </label>
+            <br />
             <input
               type='text'
               name='description'

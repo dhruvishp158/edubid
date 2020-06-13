@@ -39,6 +39,7 @@ const AddExperience = ({ addExperience, history }) => {
             <label htmlFor='address' style={{ fontSize: "1.4rem" }}>
               Job Title
             </label>
+            <br />
             <input
               type='text'
               placeholder='* Job Title'
@@ -52,6 +53,7 @@ const AddExperience = ({ addExperience, history }) => {
             <label htmlFor='address' style={{ fontSize: "1.4rem" }}>
               Company / School
             </label>
+            <br />
             <input
               type='text'
               placeholder='* Company'
@@ -66,6 +68,7 @@ const AddExperience = ({ addExperience, history }) => {
             <label htmlFor='address' style={{ fontSize: "1.4rem" }}>
               From Date
             </label>
+            <br />
             <input
               type='date'
               name='from'
@@ -106,6 +109,7 @@ const AddExperience = ({ addExperience, history }) => {
             <label htmlFor='address' style={{ fontSize: "1.4rem" }}>
               Description
             </label>
+            <br />
             <input
               type='text'
               name='description'
